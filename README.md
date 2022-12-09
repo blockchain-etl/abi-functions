@@ -6,7 +6,7 @@ Utility functions for using an ABI to decode EVM calls and events.
 
 ### Example 1
 
-Assuming you have the ABI in a table mapping contract to address, this will return a table of all bids to buy CryptoPunks:
+Assuming you have the [ABI](https://github.com/blockchain-etl/abi-functions/blob/main/abi/CryptoPunksMarket.abi) in a table mapping contract to address, this will return a table of all bids to buy CryptoPunks:
 
 ```sql
 CREATE TEMP FUNCTION CryptoPunksMarket_evt_PunkBidEntered(kv ARRAY<STRUCT<arg STRING,val STRING>>) RETURNS STRUCT<punkIndex STRING,value STRING,fromAddress STRING> LANGUAGE js AS """

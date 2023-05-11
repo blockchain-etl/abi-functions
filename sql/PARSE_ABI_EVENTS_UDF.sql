@@ -42,6 +42,7 @@ abi = JSON.parse(abi);
   abi.forEach(function(x){
     tuple = [];
     tuple['name'] = dune_name + "_evt_" + x.name;
+    tuple['orig_name'] = x.name;
     tuple['anonymous'] = x.anonymous;
 
     if (x.type != 'event') {
@@ -74,7 +75,7 @@ abi = JSON.parse(abi);
       count = count + 1;
     });
     tuple['inputs'] = argpairs.join(",");
-    tuple['hash_id'] = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(tuple['name'] + '(' + argtypes.join(',') + ')'));
+    tuple['hash_id'] = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(tuple['orig_name'] + '(' + argtypes.join(',') + ')'));
     res.push(tuple);
   });
   return res;
